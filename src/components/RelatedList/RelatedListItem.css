@@ -1,0 +1,13 @@
+.related-list-item {
+  padding: 7px 10px;
+  color: blue;
+}
+
+.related-list-item:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.related-list-item:active {
+  color: #ccc;
+}

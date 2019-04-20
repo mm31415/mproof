@@ -1,0 +1,16 @@
+.search-result-list-section {
+  grid-column: 1 / 4;
+  padding: 10px;
+}
+
+.search-result-list-header {
+  padding: 10px 10px;
+}
+
+.search-result-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: min-content repeat(5, minmax(min-content, 500px));
+  /* grid-auto-rows: minmax(min-content, 418px); */
+  grid-gap: 10px;
+}
