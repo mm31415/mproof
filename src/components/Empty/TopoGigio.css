@@ -2,3 +2,9 @@
   grid-column: 1 / 4;
   text-align: center;
 }
+
+@media(max-width: 340px) {
+  .topo-gigio-wrapper > img {
+    width: 100%;
+  }
+}

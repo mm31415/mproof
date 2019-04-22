@@ -4,7 +4,7 @@ import './Search.css';
 
 const Search = ({ searchValue, onChange, onClick }) => {
 
-  const [autoFill, setAutoFill] = useState([]);
+  // const [autoFill, setAutoFill] = useState([]);
 
   const handleChange = (e) => {
     const element = e.currentTarget;
@@ -21,10 +21,10 @@ const Search = ({ searchValue, onChange, onClick }) => {
           onChange={handleChange}
           placeholder="Search something"
         />
-      <Autofill
+      { /*<Autofill
         list={autoFill}
         onClick={onClick}
-      />
+      /> */ }
       </div>
       <button
         className="search-btn"
