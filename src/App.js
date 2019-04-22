@@ -21,8 +21,6 @@ const App = (props) => {
   }, [searching]);
 
   const search = () => {
-    console.log(pageNumber);
-    setLoading(true);
     fetchData(pageNumber, searchValue)
       .then(res => res.json())
       .then(data => {
@@ -33,26 +31,28 @@ const App = (props) => {
         else setSearchItems([...searchItems, ...data.value]);
 
         if (data.value.length < 20) setMaxPage(pageNumber);
-        if (searching) setSearching(false);
+        setSearching(false);
         setLoading(false);
       })
       .catch(err => console.log(err));
   };
 
-  const handleSuggestedSearch = (value) => {
+  const handleNewSearch = (value) => {
+    setLoading(true);
     setPageNumber(1);
     setMaxPage(null);
-    setSearchValue(value);
+    if (value) setSearchValue(value);
     setSearching(true);
   };
 
   const handlePaginate = (action) => {
-    if (action === 'next') {
-      setPageNumber(pageNumber + 1);
+    const newPage = action === 'next' ? pageNumber + 1 : pageNumber - 1;
+
+    if (!searchItems[(newPage - 1) * 20]) {
+      setLoading(true);
       setSearching(true);
-    } else {
-      setPageNumber(pageNumber - 1);
     }
+    setPageNumber(newPage);
   }
 
   console.log(pageNumber);
@@ -63,7 +63,7 @@ const App = (props) => {
       <Search
         searchValue={searchValue}
         onChange={setSearchValue}
-        onClick={search}
+        onClick={handleNewSearch}
       />
       <SearchList
         loading={loading}
@@ -72,7 +72,7 @@ const App = (props) => {
       <RelatedList
         loading={loading}
         list={relatedItems}
-        onClick={handleSuggestedSearch}
+        onClick={handleNewSearch}
       />
       <PaginateNav
         hidden={loading || !searchItems.length}
