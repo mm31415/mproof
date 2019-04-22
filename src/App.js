@@ -21,14 +21,17 @@ const App = (props) => {
   }, [searching]);
 
   const search = () => {
+    console.log(pageNumber);
     setLoading(true);
     fetchData(pageNumber, searchValue)
       .then(res => res.json())
       .then(data => {
-        if (pageNumber > 1) setSearchItems([...searchItems, ...data.value]);
-        else setSearchItems(data.value)
+        if (pageNumber === 1) {
+          setSearchItems(data.value);
+          setRelatedItems(data.relatedSearch);
+        }
+        else setSearchItems([...searchItems, ...data.value]);
 
-        if (data.relatedSearch) setRelatedItems(data.relatedSearch);
         if (data.value.length < 20) setMaxPage(pageNumber);
         if (searching) setSearching(false);
         setLoading(false);
@@ -38,9 +41,21 @@ const App = (props) => {
 
   const handleSuggestedSearch = (value) => {
     setPageNumber(1);
+    setMaxPage(null);
     setSearchValue(value);
     setSearching(true);
   };
+
+  const handlePaginate = (action) => {
+    if (action === 'next') {
+      setPageNumber(pageNumber + 1);
+      setSearching(true);
+    } else {
+      setPageNumber(pageNumber - 1);
+    }
+  }
+
+  console.log(pageNumber);
 
   return (
     <div className="app">
@@ -63,6 +78,7 @@ const App = (props) => {
         hidden={loading || !searchItems.length}
         pageNumber={pageNumber}
         maxPage={maxPage}
+        onClick={handlePaginate}
       />
     </div>
   );

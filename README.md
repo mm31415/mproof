@@ -1,8 +1,8 @@
 A Basic Search App I created to learn how to use React Hooks and CSS Grid.
 
-1)  You will need to attain an apiKey from https://rapidapi.com/contextualwebsearch/api/web-search
-2)  Setup a ```secret.js``` file with values imported in ```fetchData.js```
-3)  Run ```npm start```
+1)  You will need to attain an apiKey from https://rapidapi.com/contextualwebsearch/api/web-search  
+2)  Setup a ```secret.js``` file with values imported in ```fetchData.js```  
+3)  Run ```npm start```  
 4)  Enjoy!
 
 
@@ -10,7 +10,8 @@ LoadingIndicator is not mine. I just modified the code from: https://loading.io/
 
 The power of React Hooks
 
-```const search = (searchVal) => {
+```
+const search = (searchVal) => {
   setLoading(true);
 
   if (searchVal) {
@@ -35,4 +36,33 @@ The power of React Hooks
       setLoading(false);
     })
     .catch(err => console.log(err));
-};```  
+};
+```
+
+```
+useEffect(() => {
+  if (searching) search();
+}, [searching]);
+
+const search = () => {
+  setLoading(true);
+  fetchData(pageNumber, searchValue)
+    .then(res => res.json())
+    .then(data => {
+      if (pageNumber > 1) setSearchItems([...searchItems, ...data.value]);
+      else setSearchItems(data.value)
+
+      if (data.relatedSearch) setRelatedItems(data.relatedSearch);
+      if (data.value.length < 20) setMaxPage(pageNumber);
+      if (searching) setSearching(false);
+      setLoading(false);
+    })
+    .catch(err => console.log(err));
+};
+
+const handleSuggestedSearch = (value) => {
+  setPageNumber(1);
+  setSearchValue(value);
+  setSearching(true);
+};
+```
