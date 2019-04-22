@@ -1,0 +1,16 @@
+.autofill-item {
+  padding: 5px;
+  background: #fff;
+  border-bottom: 1px solid #888;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.autofill-item:last-of-type {
+  border-bottom: none;
+}
+
+.autofill-item:hover {
+  cursor: pointer;
+  background: #eee;
+}

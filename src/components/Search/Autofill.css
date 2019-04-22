@@ -1,0 +1,7 @@
+.autofill-list {
+  position: absolute;
+  top: 68px;
+  border: 1px solid #ddd;
+  border-top: none;
+  width: 200px;
+}

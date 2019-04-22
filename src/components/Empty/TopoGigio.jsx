@@ -8,6 +8,7 @@ const TopoGigio = () => (
       src={require('./topogigio.gif')}
       alt="topo gigio"
     />
+    <h2>Nothing to Show</h2>
   </div>
 );
 

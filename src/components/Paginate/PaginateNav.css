@@ -1,0 +1,21 @@
+.paginate-nav {
+  grid-column: 1 / 4;
+  grid-row: 40px;
+  text-align: center;
+  padding: 20px;
+}
+
+.paginate-btn {
+  padding: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.paginate-btn:hover {
+  cursor: pointer;
+}
+
+.paginate-btn:active {
+  background: #ddd;
+}
