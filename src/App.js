@@ -55,8 +55,6 @@ const App = (props) => {
     setPageNumber(newPage);
   }
 
-  console.log(pageNumber);
-
   return (
     <div className="app">
       <header className="header"><h1>Yo, Search It!</h1></header>
