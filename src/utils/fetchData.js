@@ -1,7 +1,6 @@
 import { API_URL, API_KEY, API_HOST } from '../secret';
 
 export const fetchData = (pageNumber, searchValue) => {
-  console.log(searchValue);
   const url = `${API_URL}&pageNumber=${pageNumber}&q=${searchValue}`;
 
   return fetch(url, {

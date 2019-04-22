@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import Autofill from './Autofill';
+import React from 'react';
 import './Search.css';
 
 const Search = ({ searchValue, onChange, onClick }) => {
-
-  // const [autoFill, setAutoFill] = useState([]);
 
   const handleChange = (e) => {
     const element = e.currentTarget;
@@ -21,10 +18,6 @@ const Search = ({ searchValue, onChange, onClick }) => {
           onChange={handleChange}
           placeholder="Search something"
         />
-      { /*<Autofill
-        list={autoFill}
-        onClick={onClick}
-      /> */ }
       </div>
       <button
         className="search-btn"
